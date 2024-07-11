@@ -59,8 +59,16 @@ body {
   overflow: hidden;
 }
 
-.form__input--right-padding{
-    padding: 10px ;
+.form__input--right-padding {
+  padding: 10px;
+  border: 1px solid var(--Slate700);
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.form__input--right-padding:focus {
+  outline: none;
 }
 .form__label {
   color: var(--Slate700);
