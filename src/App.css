@@ -1,42 +1,151 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+:root {
+  --Lime: hsl(61, 70%, 52%);
+  --Red: hsl(4, 69%, 50%);
+
+  --White: hsl(0, 0%, 100%);
+  --Slate100: hsl(202, 86%, 94%);
+  --Slate300: hsl(203, 41%, 72%);
+  --Slate500: hsl(200, 26%, 54%);
+  --Slate700: hsl(200, 24%, 40%);
+  --Slate900: hsl(202, 55%, 16%);
+}
+@font-face {
+  font-family: "Jakarta";
+  src: url("./fonts/PlusJakartaSans-VariableFont_wght.ttf") format("trueType");
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--White);
+  font-family: "Jakarta", sans-serif;
+}
+
+.Mortgage__container {
+  padding: 30px 20px;
+}
+.Mortgage__heading {
+  color: var(--Slate900);
+}
+.Mortgage__button {
+  display: block;
+  margin-block: 10px 20px;
+  color: var(--Slate700);
+}
+
+.form {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  align-items: center;
+}
+.input__wrapper {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  color: var(--Slate700);
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+}
+.form__input {
+  padding: 10px 10px 10px 45px;
+  border: 1px solid var(--Slate700);
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.form__input--right-padding{
+    padding: 10px ;
+}
+.form__label {
+  color: var(--Slate700);
+}
+.form__input:focus {
+  outline: none;
+}
+.form__span {
+  position: absolute;
+  display: flex;
+  top: calc(53% - 4px);
+  left: 1px;
+  background-color: var(--Slate100);
+  height: calc(53% - 1px);
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  color: var(--Slate900);
+  padding-inline: 14px;
+}
+.form__span--right-term {
+  left: calc(100% - 70px);
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.form__span--right-rate {
+  left: calc(100% - 45px);
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.form__submit {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: var(--Lime);
+  border: none;
+  width: 100%;
+  color: var(--Slate900);
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.result {
+  background-color: var(--Slate900);
+  color: var(--White);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 30px;
+}
+.result__wrapper {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.radio-wrapper {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  margin-block: 10px 15px;
+  width: 100%;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.radio-group {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.radio-group__input {
+  position: absolute;
+  display: flex;
+  height: calc(100% + 2px);
+  margin-inline: 10px;
 }
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.radio-group__label {
+  border: 1px solid var(--Slate700);
+  border-radius: 5px;
+  padding: 10px 10px 10px 33px;
+  font-weight: 800;
+  color: var(--Slate900);
+  cursor: pointer;
 }
