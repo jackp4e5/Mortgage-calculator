@@ -17,45 +17,40 @@ export function Form() {
     htmlSpan: "%",
   };
   const mortgage = [amount, term, rate];
-  mortgage.forEach((item) => {
-    item.htmlFormLabel === "rate" && item.htmlFormLabel === "term"
-      ? console.log("cumple")
-      : console.log(
-          item.htmlFormLabel === "rate" || item.htmlFormLabel === "term"
-        );
-  });
   return (
     <>
       <form className="form">
-        {mortgage.map((element, i) => (
-          <div className="input__wrapper" key={element.name}>
-            <label className={`form__label`} htmlFor={element.name}>
-              {element.name}
-            </label>
-            <input
-              className={`${
-                element.htmlFormLabel === "term" ||
-                element.htmlFormLabel === "rate"
-                  ? "form__input--right-padding"
-                  : "form__input"
-              }`}
-              type="text"
-              id={element.name}
-            />
-            <span
-              className={`${
-                element.htmlFormLabel === "term"
-                  ? "form__span  form__span--right-term"
-                  : element.htmlFormLabel === "rate"
-                  ? "form__span  form__span--right-rate"
-                  : "form__span"
-              }`}
-            >
-              {element.htmlSpan}
-            </span>
-          </div>
-        ))}
-
+        <div className="input__group">
+          {mortgage.map((element, i) => (
+            <div className="input__wrapper" key={element.name}>
+              <label className={`form__label`} htmlFor={element.name}>
+                {element.name}
+              </label>
+                <input
+                  className={`${
+                    element.htmlFormLabel === "term" ||
+                    element.htmlFormLabel === "rate"
+                      ? "form__input--right-padding"
+                      : "form__input"
+                  }`}
+                  type="text"
+                  id={element.name}
+                />
+              
+              <span
+                className={`${
+                  element.htmlFormLabel === "term"
+                    ? "form__span  form__span--right-term"
+                    : element.htmlFormLabel === "rate"
+                    ? "form__span  form__span--right-rate"
+                    : "form__span"
+                }`}
+              >
+                {element.htmlSpan}
+              </span>
+            </div>
+          ))}
+        </div>
         <div className="radio-wrapper">
           <p className="form__label">Mortgage Type</p>
           <div className="radio-group">
