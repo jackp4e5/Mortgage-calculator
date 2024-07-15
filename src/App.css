@@ -35,12 +35,6 @@ body {
   margin-block: 10px 20px;
   color: var(--Slate700);
 }
-@media (min-width: 500px) {
-  .Mortgage__button {
-    display: flex;
-    justify-content: flex-end;
-  }
-}
 
 .form {
   display: flex;
@@ -58,20 +52,22 @@ body {
   gap: 10px;
   color: var(--Slate700);
   margin-bottom: 10px;
+}
+
+.mask{
+  width: 100%;
   position: relative;
 }
 .form__input {
-  padding: 15px 10px 19px 45px;
+  padding: 13px 10px 13px 45px;
   border: 1px solid var(--Slate700);
   border-radius: 5px;
   cursor: pointer;
+  font-size: 20px;
+  width: 100%;
 }
 .form__input--right-padding {
-  padding: 17px;
-  border: 1px solid var(--Slate700);
-  border-radius: 5px;
-  cursor: pointer;
-  overflow: hidden;
+  padding: 13px;
 }
 
 .form__input--right-padding:focus {
@@ -86,10 +82,10 @@ body {
 .form__span {
   position: absolute;
   display: flex;
-  top: calc(39%);
+  top: 1px;
   left: 1px;
   background-color: var(--Slate100);
-  height: calc(60%);
+  height: calc(97%);
   justify-content: center;
   align-items: center;
   border-top-left-radius: 5px;
@@ -183,6 +179,10 @@ input[type="radio"]:checked ~ .radio-group__label {
 .result__text {
   line-height: 1.8;
 }
+.text_error{
+  color: red;
+  display: none;
+}
 
 /* tablet */
 @media (min-width: 500px) {
@@ -198,6 +198,10 @@ input[type="radio"]:checked ~ .radio-group__label {
     margin: 40px auto;
     border-radius: 20px;
     overflow: hidden;
+  }
+  .Mortgage__button {
+    display: flex;
+    justify-content: flex-end;
   }
   .Mortgage__container {
     display: grid;
@@ -241,10 +245,8 @@ input[type="radio"]:checked ~ .radio-group__label {
     background-color: var(--Slate100);
   }
   .Mortgage {
-    width: 890px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-areas: "container container container result result result";
+    max-width: 800px;
+    display: flex;
     border: 1px solid var(--Slate100);
     background-color: var(--White);
   }
@@ -255,10 +257,9 @@ input[type="radio"]:checked ~ .radio-group__label {
   }
   .form__input {
     padding: 10px 10px 10px 45px;
-    border: 1px solid var(--Slate700);
-    border-radius: 5px;
     cursor: pointer;
     overflow: hidden;
+    font-size: 14px;
   }
 
   .form__input--right-padding {
@@ -267,6 +268,7 @@ input[type="radio"]:checked ~ .radio-group__label {
     border-radius: 5px;
     cursor: pointer;
     overflow: hidden;
+    font-size: 14px;
   }
   .radio-group__label {
     border: 1px solid var(--Slate700);
@@ -278,11 +280,11 @@ input[type="radio"]:checked ~ .radio-group__label {
   }
 
   .form__span {
-    top: calc(47%);
-    height: calc(52%);
+    top: calc(2%);
+    height: calc(96%);
   }
   .result {
-    grid-column: result;
+    flex: 1 400px;
     border-bottom-left-radius: 120px;
   }
 
