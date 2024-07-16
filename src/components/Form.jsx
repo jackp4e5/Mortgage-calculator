@@ -30,7 +30,7 @@ export function Form() {
     setTermField(e.target[1].value);
     setRateField(e.target[2].value);
     setInterestFieldInteres(e.target[3].value);
-    setRepaymentFieldInteres(e.target[4].id);
+    setRepaymentFieldInteres(e.target[4].value);
     setTimeout(() => {
       console.log(
         amountField,
@@ -87,6 +87,7 @@ export function Form() {
               className="radio-group__input"
               type="radio"
               name="type-Mortgage"
+              value={"Repayment"}
             />
             <label className="radio-group__label" htmlFor="repayment">
               {" "}
@@ -99,6 +100,7 @@ export function Form() {
               className="radio-group__input"
               type="radio"
               name="type-Mortgage"
+              value={"Interest"}
             />
             <label className="radio-group__label" htmlFor="interest">
               Interest Only

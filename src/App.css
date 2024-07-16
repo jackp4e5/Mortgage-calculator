@@ -245,7 +245,7 @@ input[type="radio"]:checked ~ .radio-group__label {
     background-color: var(--Slate100);
   }
   .Mortgage {
-    max-width: 800px;
+    max-width: 890px;
     display: flex;
     border: 1px solid var(--Slate100);
     background-color: var(--White);
