@@ -24,4 +24,4 @@ npm run build
  # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
 
  # if you are deploying to https://<USERNAME>.github.io/<REPO>
- # git push -f git@github.com:jack4e5/Mortgage-repayment-calculator.github.io.git main:gh-pages
+ # git push -f git@github.com:jack4e5/Mortgageejemplo-repayment-calculator.github.io.git main:gh-pages
