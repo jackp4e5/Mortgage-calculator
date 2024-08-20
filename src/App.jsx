@@ -6,8 +6,8 @@ import { useReducer } from "react";
 import { MortgageReducer } from "./reducer/Reducer";
 
 function App() {
-  const [list, dispatch] = useReducer(MortgageReducer, initialState);
-console.log(list);
+  const [state, dispatch] = useReducer(MortgageReducer, initialState);
+console.log(state);
 
 
   return (
@@ -17,7 +17,7 @@ console.log(list);
         <a className="Mortgage__button" href="#">
           Clear All
         </a>
-        <Form dispatch={dispatch} list={list} />
+        <Form dispatch={dispatch} state={state} />
       </section>
       <Result image={image} />
     </main>

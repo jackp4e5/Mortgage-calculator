@@ -24,10 +24,10 @@ const rate = {
 const mortgage = [amount, term, rate];
 
 export const Form = ({ dispatch, list }) => {
-  const [state, setState] = useState(initialState);
+  const [list, setList] = useState(initialState);
 
   const handleOnchange = (e) => {
-    setState({
+    setList({
       ...state,
       [e.target.id]: +e.target.value,
     });
