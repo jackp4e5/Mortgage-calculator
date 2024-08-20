@@ -1,10 +1,10 @@
 import "./App.css";
-import { Form, initialState } from "./components/Form";
+import { Form } from "./components/Form";
 import image from "./assets/illustration-empty.svg";
 import { Result } from "./components/Result";
 import { useReducer } from "react";
 import { MortgageReducer } from "./reducer/Reducer";
-
+export const initialState = [];
 function App() {
   const [state, dispatch] = useReducer(MortgageReducer, initialState);
 

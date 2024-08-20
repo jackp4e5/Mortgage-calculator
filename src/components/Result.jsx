@@ -1,5 +1,14 @@
-export const Result = ({image,state}) => {
-console.log(state);
+import { useEffect } from "react";
+
+export const Result = ({ image, state }) => {
+  useEffect(() => {
+    if (state.length === 0) {
+      console.log("esta vacio");
+    } else {
+      console.log("esta esta lleno");
+      console.log(state[0].payload["type-Mortgage"]);
+    }
+  }, [state]);
 
   return (
     <div className="result">
