@@ -1,51 +1,56 @@
-import { useState } from "react";
+import {  useState } from "react";
 import calculatorImg from "../assets/icon-calculator.svg";
+export const initialState = {
+  "Mortgage Amount": 0,
+  "Mortgage Term": 0,
+  "Interes Rate": 0,
+};
+const amount = {
+  name: "Mortgage Amount",
+  htmlFormLabel: "amount",
+  htmlSpan: "£",
+};
+const term = {
+  name: "Mortgage Term",
+  htmlFormLabel: "term",
+  htmlSpan: "years",
+};
+const rate = {
+  name: "Interes Rate",
+  htmlFormLabel: "rate",
+  htmlSpan: "%",
+};
 
-export function Form() {
-  const amount = {
-    name: "Mortgage Amount",
-    htmlFormLabel: "amount",
-    htmlSpan: "£",
+const mortgage = [amount, term, rate];
+
+export const Form = ({ dispatch, list }) => {
+  const [state, setState] = useState(initialState);
+
+  const handleOnchange = (e) => {
+    setState({
+      ...state,
+      [e.target.id]: +e.target.value,
+    });
+    console.log({ [e.target.id]: +e.target.value });
   };
-  const term = {
-    name: "Mortgage Term",
-    htmlFormLabel: "term",
-    htmlSpan: "years",
-  };
-  const rate = {
-    name: "Interes Rate",
-    htmlFormLabel: "rate",
-    htmlSpan: "%",
-  };
-  const mortgage = [amount, term, rate];
-  const [amountField, setAmoutField] = useState("");
-  const [termtField, setTermField] = useState("");
-  const [ratetField, setRateField] = useState("");
-  const [interestFieldInteres, setInterestFieldInteres] = useState("");
-  const [repaymentFieldInteres, setRepaymentFieldInteres] = useState("");
+
+  /*   const [list, dispatch] = useReducer((stateReducer = initialState, action) => {
+    console.log(action.payload);
+
+    return stateReducer;
+  }); */
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setAmoutField(e.target[0].value);
-    setTermField(e.target[1].value);
-    setRateField(e.target[2].value);
-    setInterestFieldInteres(e.target[3].value);
-    setRepaymentFieldInteres(e.target[4].value);
-    setTimeout(() => {
-      console.log(
-        amountField,
-        termtField,
-        ratetField,
-        interestFieldInteres,
-        repaymentFieldInteres
-      );
-    }, 500);
+
+    dispatch({ type: "save-data", payload: state });
   };
+
   return (
     <>
       <form onSubmit={handleSubmit} className="form">
         <div className="input__group">
-          {mortgage.map((element, i) => (
+          {mortgage.map((element) => (
             <div className="input__wrapper" key={element.name}>
               <label className={`form__label`} htmlFor={element.name}>
                 {element.name}
@@ -61,6 +66,7 @@ export function Form() {
                   type="text"
                   id={element.name}
                   autoComplete="off"
+                  onChange={handleOnchange}
                 />
 
                 <span
@@ -115,4 +121,4 @@ export function Form() {
       </form>
     </>
   );
-}
+};
