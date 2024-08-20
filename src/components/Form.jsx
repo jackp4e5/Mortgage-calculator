@@ -23,12 +23,12 @@ const rate = {
 
 const mortgage = [amount, term, rate];
 
-export const Form = ({ dispatch, list }) => {
+export const Form = ({ dispatch, state }) => {
   const [list, setList] = useState(initialState);
 
   const handleOnchange = (e) => {
     setList({
-      ...state,
+      ...list,
       [e.target.id]: +e.target.value,
     });
     console.log({ [e.target.id]: +e.target.value });
@@ -43,7 +43,7 @@ export const Form = ({ dispatch, list }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch({ type: "save-data", payload: state });
+    dispatch({ type: "save-data", payload: list });
   };
 
   return (
