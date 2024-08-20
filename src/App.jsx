@@ -7,8 +7,6 @@ import { MortgageReducer } from "./reducer/Reducer";
 
 function App() {
   const [state, dispatch] = useReducer(MortgageReducer, initialState);
-console.log(state);
-
 
   return (
     <main className="Mortgage">
@@ -17,9 +15,9 @@ console.log(state);
         <a className="Mortgage__button" href="#">
           Clear All
         </a>
-        <Form dispatch={dispatch} state={state} />
+        <Form dispatch={dispatch} />
       </section>
-      <Result image={image} />
+      <Result image={image} state={state} />
     </main>
   );
 }

@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import calculatorImg from "../assets/icon-calculator.svg";
 export const initialState = {
   "Mortgage Amount": 0,
@@ -23,15 +23,14 @@ const rate = {
 
 const mortgage = [amount, term, rate];
 
-export const Form = ({ dispatch, list }) => {
+export const Form = ({ dispatch }) => {
   const [list, setList] = useState(initialState);
 
   const handleOnchange = (e) => {
     setList({
-      ...state,
+      ...list,
       [e.target.id]: +e.target.value,
     });
-    console.log({ [e.target.id]: +e.target.value });
   };
 
   /*   const [list, dispatch] = useReducer((stateReducer = initialState, action) => {
@@ -43,7 +42,7 @@ export const Form = ({ dispatch, list }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch({ type: "save-data", payload: state });
+    dispatch({ type: "save-data", payload :list });
   };
 
   return (

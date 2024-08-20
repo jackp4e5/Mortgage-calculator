@@ -1,4 +1,6 @@
-export const Result = ({image}) => {
+export const Result = ({image,state}) => {
+console.log(state);
+
   return (
     <div className="result">
       <img className="result__img" src={image} alt="" />
