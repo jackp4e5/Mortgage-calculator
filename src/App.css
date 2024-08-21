@@ -57,6 +57,7 @@ body {
 .mask{
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 .form__input {
   padding: 13px 10px 13px 45px;
@@ -182,6 +183,11 @@ input[type="radio"]:checked ~ .radio-group__label {
 .text_error{
   color: red;
   display: none;
+  text-transform: capitalize;
+  font-size: 12px;
+}
+.text_error--completed{
+  display: block;
 }
 
 /* tablet */

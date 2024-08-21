@@ -1,9 +1,10 @@
 import { useState } from "react";
 import calculatorImg from "../assets/icon-calculator.svg";
+import { validationFields } from "../handle";
 const initialState = {
-  "Mortgage Amount": 0,
-  "Mortgage Term": 0,
-  "Interes Rate": 0,
+  "Mortgage Amount": "",
+  "Mortgage Term": "",
+  "Interes Rate": "",
   "type-Mortgage": "",
 };
 const amount = {
@@ -36,16 +37,11 @@ export const Form = ({ dispatch }) => {
       [e.target.name]: e.target.value,
     });
   };
-
-  /*   const [list, dispatch] = useReducer((stateReducer = initialState, action) => {
-    console.log(action.payload);
-
-    return stateReducer;
-  }); */
-
+  const handleOnblur = (e) => {
+    validationFields(e);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-
     dispatch([{ type: "save-data", payload: list }]);
   };
 
@@ -68,8 +64,10 @@ export const Form = ({ dispatch }) => {
                   }`}
                   type="text"
                   id={element.name}
+                  // value={initialState[element.name]}
                   autoComplete="off"
                   onChange={handleOnchange}
+                  onBlur={handleOnblur}
                 />
 
                 <span
@@ -84,7 +82,7 @@ export const Form = ({ dispatch }) => {
                   {element.htmlSpan}
                 </span>
               </div>
-              <p className="text_error">hola</p>
+              <p className="text_error">this field is required</p>
             </div>
           ))}
         </div>
@@ -117,6 +115,7 @@ export const Form = ({ dispatch }) => {
               Interest Only
             </label>
           </div>
+          <p className="text_error">this field is required</p>
         </div>
         <button className="form__submit">
           {" "}
