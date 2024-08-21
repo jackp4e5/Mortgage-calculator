@@ -1,14 +1,12 @@
 import "./App.css";
-import { Form, initialState } from "./components/Form";
+import { Form } from "./components/Form";
 import image from "./assets/illustration-empty.svg";
 import { Result } from "./components/Result";
 import { useReducer } from "react";
 import { MortgageReducer } from "./reducer/Reducer";
-
+export const initialState = [];
 function App() {
   const [state, dispatch] = useReducer(MortgageReducer, initialState);
-console.log(state);
-
 
   return (
     <main className="Mortgage">
@@ -17,9 +15,9 @@ console.log(state);
         <a className="Mortgage__button" href="#">
           Clear All
         </a>
-        <Form dispatch={dispatch} state={state} />
+        <Form dispatch={dispatch} />
       </section>
-      <Result image={image} />
+      <Result image={image} state={state} />
     </main>
   );
 }

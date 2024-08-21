@@ -1,16 +1,10 @@
-import { initialState } from "../components/Form";
-
-initialState;
-
-export const MortgageReducer = (state = initialState, action) => {
-  console.log(action.payload);
-
+export const MortgageReducer = (action, state = []) => {
   if (action === "save-data") {
     console.log(action.payload);
 
     return {
       ...state,
-      state: action.payload,
+      state: [action],
     };
   }
 

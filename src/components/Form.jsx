@@ -1,9 +1,10 @@
-import {  useState } from "react";
+import { useState } from "react";
 import calculatorImg from "../assets/icon-calculator.svg";
-export const initialState = {
+const initialState = {
   "Mortgage Amount": 0,
   "Mortgage Term": 0,
   "Interes Rate": 0,
+  "type-Mortgage": "",
 };
 const amount = {
   name: "Mortgage Amount",
@@ -23,15 +24,16 @@ const rate = {
 
 const mortgage = [amount, term, rate];
 
-export const Form = ({ dispatch, state }) => {
+export const Form = ({ dispatch, list }) => {
   const [list, setList] = useState(initialState);
 
   const handleOnchange = (e) => {
+    const isValidFild = ["repayment", "interest"].includes(e.target.id);
+
     setList({
-      ...list,
+      ...state,
       [e.target.id]: +e.target.value,
     });
-    console.log({ [e.target.id]: +e.target.value });
   };
 
   /*   const [list, dispatch] = useReducer((stateReducer = initialState, action) => {
@@ -43,7 +45,7 @@ export const Form = ({ dispatch, state }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch({ type: "save-data", payload: list });
+    dispatch({ type: "save-data", payload: state });
   };
 
   return (
@@ -93,7 +95,8 @@ export const Form = ({ dispatch, state }) => {
               className="radio-group__input"
               type="radio"
               name="type-Mortgage"
-              value={"Repayment"}
+              value={"repayment"}
+              onChange={handleOnchange}
             />
             <label className="radio-group__label" htmlFor="repayment">
               {" "}
@@ -106,7 +109,8 @@ export const Form = ({ dispatch, state }) => {
               className="radio-group__input"
               type="radio"
               name="type-Mortgage"
-              value={"Interest"}
+              value={"interest"}
+              onChange={handleOnchange}
             />
             <label className="radio-group__label" htmlFor="interest">
               Interest Only
