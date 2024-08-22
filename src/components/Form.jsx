@@ -24,17 +24,29 @@ const rate = {
 
 const mortgage = [amount, term, rate];
 
-export const Form = ({ dispatch, list }) => {
+export const Form = ({ dispatch }) => {
   const [list, setList] = useState(initialState);
 
   const handleOnchange = (e) => {
     const isValidFild = ["repayment", "interest"].includes(e.target.id);
-
+    const isEmptyFild = [e.target.value].includes('');
+    console.log(isEmptyFild);
+    
+    
     setList({
-      ...state,
-      [e.target.id]: +e.target.value,
+      ...list,
+      [e.target.id]: !isValidFild ? +e.target.value :  e.target.value,
+      [e.target.name]: e.target.value,
     });
+
   };
+
+  const handleBlur = (e)=>{
+    const span = e.target.parentElement.children[1]
+    console.log(span);
+    
+    
+  }
 
   /*   const [list, dispatch] = useReducer((stateReducer = initialState, action) => {
     console.log(action.payload);
@@ -45,7 +57,7 @@ export const Form = ({ dispatch, list }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch({ type: "save-data", payload: state });
+    dispatch([{ type: "save-data", payload: list }]);
   };
 
   return (
@@ -69,6 +81,7 @@ export const Form = ({ dispatch, list }) => {
                   id={element.name}
                   autoComplete="off"
                   onChange={handleOnchange}
+                  onBlur={handleBlur}
                 />
 
                 <span

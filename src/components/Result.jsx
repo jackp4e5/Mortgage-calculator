@@ -6,7 +6,7 @@ export const Result = ({ image, state }) => {
       console.log("esta vacio");
     } else {
       console.log("esta esta lleno");
-      console.log(state[0].payload["type-Mortgage"]);
+      console.log(state[0].payload);
     }
   }, [state]);
 
