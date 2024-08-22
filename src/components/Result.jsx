@@ -1,4 +1,8 @@
 export const Result = ({ image, state }) => {
+  console.log(
+    state.length > 0 ? state[0].payload["Interes Rate"] : "Hola cris"
+  );
+
   return state.length === 0 ? (
     <div className="result">
       <img className="result__img" src={image} alt="" />
@@ -18,9 +22,13 @@ export const Result = ({ image, state }) => {
           Complete the form and click “calculate repayments” to see what your
           monthly repayments would be.
         </p>
-        <div>
-          <p><span></span></p>
-          <p><span></span></p>
+        <div className="result-data">
+          <p className="result-data__paragraph">
+              yours monthly repayment     {" "} <span className="result-data__paragraph--span">{state[0].payload["Interes Rate"] } </span>
+          </p>
+          <p>
+            hola<span>hola aqui</span>
+          </p>
         </div>
       </section>
     </div>

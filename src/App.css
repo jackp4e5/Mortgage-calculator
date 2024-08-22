@@ -54,7 +54,7 @@ body {
   margin-bottom: 10px;
 }
 
-.mask{
+.mask {
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -180,13 +180,13 @@ input[type="radio"]:checked ~ .radio-group__label {
 .result__text {
   line-height: 1.8;
 }
-.text_error{
+.text_error {
   color: red;
   display: none;
   text-transform: capitalize;
   font-size: 12px;
 }
-.text_error--completed{
+.text_error--completed {
   display: block;
 }
 
@@ -239,6 +239,18 @@ input[type="radio"]:checked ~ .radio-group__label {
     grid-column-start: amoun;
     grid-column-end: amoun;
   }
+  .result-data {
+    width: 100%;
+    background-color: hsl(202deg 85.35% 10.28%);
+    border-top: 3px solid var(--Lime);
+    border-radius: 5px;
+  }
+}
+.result-data__paragraph {
+  text-transform: capitalize;
+}
+.result-data__paragraph--span {
+  color: var(--Lime);
 }
 /* labtop */
 @media (min-width: 768px) {
