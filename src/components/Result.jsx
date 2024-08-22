@@ -18,6 +18,10 @@ export const Result = ({ image, state }) => {
           Complete the form and click “calculate repayments” to see what your
           monthly repayments would be.
         </p>
+        <div>
+          <p><span></span></p>
+          <p><span></span></p>
+        </div>
       </section>
     </div>
   );
