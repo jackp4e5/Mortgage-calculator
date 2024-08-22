@@ -239,12 +239,12 @@ input[type="radio"]:checked ~ .radio-group__label {
     grid-column-start: amoun;
     grid-column-end: amoun;
   }
-  .result-data {
-    width: 100%;
-    background-color: hsl(202deg 85.35% 10.28%);
-    border-top: 3px solid var(--Lime);
-    border-radius: 5px;
-  }
+}
+.result-data {
+  width: 100%;
+  background-color: hsl(202deg 85.35% 10.28%);
+  border-top: 3px solid var(--Lime);
+  border-radius: 5px;
 }
 .result-data__paragraph {
   text-transform: capitalize;
