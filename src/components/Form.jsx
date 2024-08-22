@@ -30,12 +30,16 @@ export const Form = ({ dispatch }) => {
 
   const handleOnchange = (e) => {
     const isValidFild = ["repayment", "interest"].includes(e.target.id);
-
+    const isEmptyFild = [e.target.value].includes('');
+    console.log(isEmptyFild);
+    
+    
     setList({
       ...list,
-      [e.target.id]: !isValidFild ? +e.target.value : e.target.value,
+      [e.target.id]: !isValidFild ? +e.target.value :  e.target.value,
       [e.target.name]: e.target.value,
     });
+
   };
   const handleOnblur = (e) => {
     validationFields(e);
