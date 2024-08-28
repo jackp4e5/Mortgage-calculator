@@ -1,7 +1,18 @@
 export const Result = ({ image, state }) => {
-  console.log(
-    state.length > 0 ? state[0].payload["Interes Rate"] : "Hola cris"
-  );
+  let resultado, amount, term, interest, type;
+  if (state[0]) {
+    console.log(state[0].payload["Mortgage Amount"]);
+
+    amount = state[0].payload["Mortgage Amount"];
+    term = state[0].payload["Mortgage Term"];
+    interest = state[0].payload["Interes Rate"];
+    type = state[0].payload["type-Mortgage"];
+
+    resultado =
+      type === "repayment" ? amount * (interest / 100) * term : "que pasa bro";
+  } else {
+    console.log("no hay nada");
+  }
 
   return state.length === 0 ? (
     <div className="result">
@@ -23,12 +34,17 @@ export const Result = ({ image, state }) => {
           monthly repayments would be.
         </p>
         <div className="result-data">
+          <p className="result-data__paragraph">your monthly repayment </p>
+          <p className="result-data__result">{`£ ${resultado}`}</p>
+
+          <hr />
+
           <p className="result-data__paragraph">
-              yours monthly repayment     {" "} <span className="result-data__paragraph--span">{state[0].payload["Interes Rate"] } </span>
+            Total you'll repay over the term{" "}
           </p>
-          <p>
-            hola<span>hola aqui</span>
-          </p>
+          <p className="result-data__result-total">{`£ ${
+            resultado + amount
+          }`}</p>
         </div>
       </section>
     </div>

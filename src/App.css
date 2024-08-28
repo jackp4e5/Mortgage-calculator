@@ -67,6 +67,13 @@ body {
   font-size: 20px;
   width: 100%;
 }
+.form__input:focus {
+  border: 2px solid var(--Lime);
+}
+.form__input:focus ~ .form__span {
+  color: var(--White);
+  background-color: var(--Lime);
+}
 .form__input--right-padding {
   padding: 13px;
 }
@@ -121,6 +128,7 @@ body {
   align-items: center;
   gap: 5px;
   cursor: pointer;
+  opacity: 0.5;
 }
 
 .radio-wrapper {
@@ -241,16 +249,34 @@ input[type="radio"]:checked ~ .radio-group__label {
   }
 }
 .result-data {
+  margin-top: 20px;
   width: 100%;
+  padding: 15px 29px;
   background-color: hsl(202deg 85.35% 10.28%);
-  border-top: 3px solid var(--Lime);
-  border-radius: 5px;
+  border-top: 4px solid var(--Lime);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .result-data__paragraph {
   text-transform: capitalize;
+  line-height: 3;
 }
-.result-data__paragraph--span {
+.result-data__result {
   color: var(--Lime);
+  font-size: 40px;
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+.result-data__result-total {
+  font-size: 20px;
+  color: white;
+}
+hr {
+  width: 100%;
+  border: 1px solid var(--Slate100);
 }
 /* labtop */
 @media (min-width: 768px) {

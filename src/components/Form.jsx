@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import calculatorImg from "../assets/icon-calculator.svg";
 import { validationFields } from "../handle";
 const initialState = {
@@ -26,26 +26,36 @@ const rate = {
 const mortgage = [amount, term, rate];
 
 export const Form = ({ dispatch }) => {
+  const current = useRef("target");
   const [list, setList] = useState(initialState);
 
-  const handleOnchange = (e) => {
+  const handleBlur = (e) => {
     const isValidFild = ["repayment", "interest"].includes(e.target.id);
-    const isEmptyFild = [e.target.value].includes('');
-    console.log(isEmptyFild);
-    
-    
+
     setList({
       ...list,
-      [e.target.id]: !isValidFild ? +e.target.value :  e.target.value,
+      [e.target.id]: !isValidFild ? +e.target.value : e.target.value,
       [e.target.name]: e.target.value,
     });
-
   };
   const handleOnblur = (e) => {
     validationFields(e);
+    if (
+      list["Interes Rate"] !== "" &&
+      list["Mortgage Amount"] !== "" &&
+      list["Mortgage Term"] !== "" &&
+      list["type-Mortgage"] !== ""
+    ) {
+      current.current.style.opacity = "1";
+      console.log("ESTA LLENO");
+    } else {
+      current.current.style.opacity = "0.5";
+      console.log("ESTA VACIO");
+    }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
     dispatch([{ type: "save-data", payload: list }]);
   };
 
@@ -68,9 +78,9 @@ export const Form = ({ dispatch }) => {
                   }`}
                   type="text"
                   id={element.name}
-                  // value={initialState[element.name]}
                   autoComplete="off"
-                  onChange={handleOnchange}
+                  value={list[element.name]}
+                  onChange={handleBlur}
                   onBlur={handleOnblur}
                 />
 
@@ -99,7 +109,8 @@ export const Form = ({ dispatch }) => {
               type="radio"
               name="type-Mortgage"
               value={"repayment"}
-              onChange={handleOnchange}
+              onChange={handleBlur}
+              onSelect={handleBlur}
             />
             <label className="radio-group__label" htmlFor="repayment">
               {" "}
@@ -113,7 +124,8 @@ export const Form = ({ dispatch }) => {
               type="radio"
               name="type-Mortgage"
               value={"interest"}
-              onChange={handleOnchange}
+              onChange={handleBlur}
+              onSelect={handleBlur}
             />
             <label className="radio-group__label" htmlFor="interest">
               Interest Only
@@ -121,7 +133,7 @@ export const Form = ({ dispatch }) => {
           </div>
           <p className="text_error">this field is required</p>
         </div>
-        <button className="form__submit">
+        <button ref={current} className="form__submit">
           {" "}
           <img src={calculatorImg} alt="" />
           Calculate Repayments
