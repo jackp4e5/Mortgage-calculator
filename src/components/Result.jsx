@@ -27,11 +27,10 @@ export const Result = ({ image, state }) => {
     </div>
   ) : (
     <div className="result">
-      <section className="result__wrapper">
-        <h2 className="result__heading">Results</h2>
+      <section className="result__wrapper--data">
+        <h2 className="result__heading--data">Your results</h2>
         <p className="result__text">
-          Complete the form and click “calculate repayments” to see what your
-          monthly repayments would be.
+          Your results are shown below based on the information you provided. to adjust the results, edit the form and click "calculate repayments" again
         </p>
         <div className="result-data">
           <p className="result-data__paragraph">your monthly repayment </p>

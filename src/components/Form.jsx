@@ -7,31 +7,45 @@ const initialState = {
   "Interes Rate": "",
   "type-Mortgage": "",
 };
-const amount = {
-  name: "Mortgage Amount",
-  htmlFormLabel: "amount",
-  htmlSpan: "£",
-};
-const term = {
-  name: "Mortgage Term",
-  htmlFormLabel: "term",
-  htmlSpan: "years",
-};
-const rate = {
-  name: "Interes Rate",
-  htmlFormLabel: "rate",
-  htmlSpan: "%",
-};
 
-const mortgage = [amount, term, rate];
+const mortgage = [
+  {
+    name: "Mortgage Amount",
+    htmlFormLabel: "amount",
+    htmlSpan: "£",
+  },
+  {
+    name: "Mortgage Term",
+    htmlFormLabel: "term",
+    htmlSpan: "years",
+  },
+  {
+    name: "Interes Rate",
+    htmlFormLabel: "rate",
+    htmlSpan: "%",
+  },
+];
 
 export const Form = ({ dispatch }) => {
   const current = useRef("target");
   const [list, setList] = useState(initialState);
 
-  const handleBlur = (e) => {
+  const handleChange = (e) => {
     const isValidFild = ["repayment", "interest"].includes(e.target.id);
 
+    if (
+      list["Interes Rate"] !== "" &&
+      list["Mortgage Amount"] !== "" &&
+      list["Mortgage Term"] !== "" &&
+      e.target.checked
+    ) {
+      current.current.style.opacity = "1";
+      current.current.disabled = false;
+      console.log(current.current.disabled);
+    } else {
+      current.current.style.opacity = "0.5";
+      console.log("ESTA VACIO");
+    }
     setList({
       ...list,
       [e.target.id]: !isValidFild ? +e.target.value : e.target.value,
@@ -40,18 +54,6 @@ export const Form = ({ dispatch }) => {
   };
   const handleOnblur = (e) => {
     validationFields(e);
-    if (
-      list["Interes Rate"] !== "" &&
-      list["Mortgage Amount"] !== "" &&
-      list["Mortgage Term"] !== "" &&
-      list["type-Mortgage"] !== ""
-    ) {
-      current.current.style.opacity = "1";
-      console.log("ESTA LLENO");
-    } else {
-      current.current.style.opacity = "0.5";
-      console.log("ESTA VACIO");
-    }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,7 +82,7 @@ export const Form = ({ dispatch }) => {
                   id={element.name}
                   autoComplete="off"
                   value={list[element.name]}
-                  onChange={handleBlur}
+                  onChange={handleChange}
                   onBlur={handleOnblur}
                 />
 
@@ -104,13 +106,14 @@ export const Form = ({ dispatch }) => {
           <p className="form__label">Mortgage Type</p>
           <div className="radio-group">
             <input
+              ref={current}
               id="repayment"
               className="radio-group__input"
               type="radio"
               name="type-Mortgage"
               value={"repayment"}
-              onChange={handleBlur}
-              onSelect={handleBlur}
+              onChange={handleChange}
+              onSelect={handleChange}
             />
             <label className="radio-group__label" htmlFor="repayment">
               {" "}
@@ -119,13 +122,13 @@ export const Form = ({ dispatch }) => {
           </div>
           <div className="radio-group">
             <input
+              ref={current}
               id="interest"
               className="radio-group__input"
               type="radio"
               name="type-Mortgage"
               value={"interest"}
-              onChange={handleBlur}
-              onSelect={handleBlur}
+              onChange={handleChange}
             />
             <label className="radio-group__label" htmlFor="interest">
               Interest Only
@@ -133,7 +136,7 @@ export const Form = ({ dispatch }) => {
           </div>
           <p className="text_error">this field is required</p>
         </div>
-        <button ref={current} className="form__submit">
+        <button disabled={true} ref={current} className="form__submit">
           {" "}
           <img src={calculatorImg} alt="" />
           Calculate Repayments

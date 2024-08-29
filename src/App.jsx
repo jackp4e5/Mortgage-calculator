@@ -12,7 +12,7 @@ function App() {
     <main className="Mortgage">
       <section className="Mortgage__container">
         <h1 className="Mortgage__heading">Mortgage Calculator</h1>
-        <a className="Mortgage__button" href="#">
+        <a className="Mortgage__button" href="" >
           Clear All
         </a>
         <Form dispatch={dispatch} />

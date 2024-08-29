@@ -1,5 +1,5 @@
 export const validationFields = (e) => {
-  if (e.target.value === "") {
+  if (e.target.value === "" || e.target.checked === false) {
     e.target.style.borderColor = "red";
     e.target.parentNode.children[1].style.backgroundColor = "red";
     e.target.parentNode.children[1].style.color = "white";

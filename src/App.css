@@ -182,11 +182,21 @@ input[type="radio"]:checked ~ .radio-group__label {
 .result__heading {
   padding: 15px;
 }
+.result__heading--data {
+  padding: 0px;
+}
 .result__wrapper {
   text-align: center;
 }
+.result__wrapper--data{
+  text-align:start;
+  display: flex;
+  flex-flow: column;
+  gap: 20px
+}
 .result__text {
-  line-height: 1.8;
+  line-height: 1.5;
+  font-size: 14px;
 }
 .text_error {
   color: red;
@@ -249,7 +259,6 @@ input[type="radio"]:checked ~ .radio-group__label {
   }
 }
 .result-data {
-  margin-top: 20px;
   width: 100%;
   padding: 15px 29px;
   background-color: hsl(202deg 85.35% 10.28%);
