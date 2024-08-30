@@ -1,15 +1,15 @@
 export const Result = ({ image, state }) => {
-  let resultado, amount, term, interest, type;
+  let resultado, amount, term, rate, type;
   if (state[0]) {
-    console.log(state[0].payload["Mortgage Amount"]);
+    console.log(state[0].payload);
 
-    amount = state[0].payload["Mortgage Amount"];
-    term = state[0].payload["Mortgage Term"];
-    interest = state[0].payload["Interes Rate"];
-    type = state[0].payload["type-Mortgage"];
+    amount = Number(state[0].payload.amount);
+    term = Number(state[0].payload.term);
+    rate = Number(state[0].payload.rate);
+    type = state[0].payload.typeMortgage;
 
     resultado =
-      type === "repayment" ? amount * (interest / 100) * term : "que pasa bro";
+      type === "repayment" ? amount * (rate / 100) * term : "que pasa bro";
   } else {
     console.log("no hay nada");
   }
@@ -30,7 +30,9 @@ export const Result = ({ image, state }) => {
       <section className="result__wrapper--data">
         <h2 className="result__heading--data">Your results</h2>
         <p className="result__text">
-          Your results are shown below based on the information you provided. to adjust the results, edit the form and click "calculate repayments" again
+          Your results are shown below based on the information you provided. to
+          adjust the results, edit the form and click "calculate repayments"
+          again
         </p>
         <div className="result-data">
           <p className="result-data__paragraph">your monthly repayment </p>
