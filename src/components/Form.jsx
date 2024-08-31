@@ -2,25 +2,24 @@ import { useRef, useState } from "react";
 import calculatorImg from "../assets/icon-calculator.svg";
 import { validationFields } from "../handle";
 const initialState = {
-  "Mortgage Amount": "",
-  "Mortgage Term": "",
-  "Interes Rate": "",
-  "type-Mortgage": "",
+  amount: "",
+  term: "",
+  rate: "",
+  typeMortgage: "",
+  repayment: "",
+  interest: "",
 };
 
 const mortgage = [
   {
-    name: "Mortgage Amount",
     htmlFormLabel: "amount",
     htmlSpan: "£",
   },
   {
-    name: "Mortgage Term",
     htmlFormLabel: "term",
     htmlSpan: "years",
   },
   {
-    name: "Interes Rate",
     htmlFormLabel: "rate",
     htmlSpan: "%",
   },
@@ -31,23 +30,22 @@ export const Form = ({ dispatch }) => {
   const [list, setList] = useState(initialState);
 
   const handleChange = (e) => {
-    const isValidFild = ["repayment", "interest"].includes(e.target.id);
-
     if (
-      list["Interes Rate"] !== "" &&
-      list["Mortgage Amount"] !== "" &&
-      list["Mortgage Term"] !== "" &&
+      list.amount !== "" &&
+      list.rate !== "" &&
+      list.term &&
       e.target.checked
     ) {
       current.current.style.opacity = "1";
       current.current.disabled = false;
+     
     } else {
       current.current.style.opacity = "0.5";
     }
     
     setList({
       ...list,
-      [e.target.id]: !isValidFild ? +e.target.value : e.target.value,
+      [e.target.id]: e.target.value,
       [e.target.name]: e.target.value,
     });
   };
@@ -65,9 +63,9 @@ export const Form = ({ dispatch }) => {
       <form onSubmit={handleSubmit} className="form">
         <div className="input__group">
           {mortgage.map((element) => (
-            <div className="input__wrapper" key={element.name}>
-              <label className={`form__label`} htmlFor={element.name}>
-                {element.name}
+            <div className="input__wrapper" key={element.htmlFormLabel}>
+              <label className={`form__label`} htmlFor={element.htmlFormLabel}>
+                {element.htmlFormLabel}
               </label>
               <div className="mask">
                 <input
@@ -78,9 +76,9 @@ export const Form = ({ dispatch }) => {
                       : "form__input"
                   }`}
                   type="text"
-                  id={element.name}
+                  id={element.htmlFormLabel}
                   autoComplete="off"
-                  value={list[element.name]}
+                  value={list[element.htmlFormLabel]}
                   onChange={handleChange}
                   onBlur={handleOnblur}
                 />
@@ -109,7 +107,7 @@ export const Form = ({ dispatch }) => {
               id="repayment"
               className="radio-group__input"
               type="radio"
-              name="type-Mortgage"
+              name="typeMortgage"
               value={"repayment"}
               onChange={handleChange}
               onSelect={handleChange}
@@ -125,7 +123,7 @@ export const Form = ({ dispatch }) => {
               id="interest"
               className="radio-group__input"
               type="radio"
-              name="type-Mortgage"
+              name="typeMortgage"
               value={"interest"}
               onChange={handleChange}
             />
