@@ -10,9 +10,7 @@ export const Result = ({ image, state }) => {
 
     resultado =
       type === "repayment" ? amount * (rate / 100) * term : "que pasa bro";
-  } else {
-    console.log("no hay nada");
-  }
+  } 
 
   return state.length === 0 ? (
     <div className="result">
