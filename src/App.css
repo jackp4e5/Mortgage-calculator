@@ -337,7 +337,7 @@ hr {
     height: calc(96%);
   }
   .result {
-    flex: 1 400px;
+    flex: 1 450px;
     border-bottom-left-radius: 120px;
   }
 

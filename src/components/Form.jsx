@@ -41,11 +41,10 @@ export const Form = ({ dispatch }) => {
     ) {
       current.current.style.opacity = "1";
       current.current.disabled = false;
-      console.log(current.current.disabled);
     } else {
       current.current.style.opacity = "0.5";
-      console.log("ESTA VACIO");
     }
+    
     setList({
       ...list,
       [e.target.id]: !isValidFild ? +e.target.value : e.target.value,
